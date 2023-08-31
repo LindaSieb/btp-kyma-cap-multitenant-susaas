@@ -34,7 +34,7 @@ stages:
       - --debug
 #      - --set
 #      - global.imagePullSecret.name=concise
-    deploymentName: mh-deployment-01
+    deploymentName: mh-deployment-044
     kubeConfigFileCredentialsId: kube-config
     namespace: mh-01
     valuesMapping:
