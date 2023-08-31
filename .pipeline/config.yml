@@ -6,6 +6,7 @@ general:
   dockerConfigJsonCredentialsId: docker-config
 service:
   buildToolVersion: "N18"
+  dockerConfigTest: concise-secret-text
 stages:
   Build:
     mavenExecuteStaticCodeChecks: false
