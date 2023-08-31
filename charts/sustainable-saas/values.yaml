@@ -78,8 +78,8 @@ srv:
         rotationFrequency: 24h
   image:
     # Provide your Backend Service Docker Image repository
-    repository: concise.common.repositories.cloud.sap/susaas-images/susaas-srv
-    tag: latest
+    repository: placeholder
+    tag: placeholder
   resources:
     limits:
       ephemeral-storage: 1G
@@ -103,8 +103,8 @@ api:
       serviceInstanceName: xsuaa-api
   image:
     # Provide your API Service Docker Image repository
-    repository: concise.common.repositories.cloud.sap/susaas-images/susaas-api
-    tag: latest
+    repository: placeholder
+    tag: placeholder
   # Settings for SAP API Management integration
   apim:
     # Only enable if SAP API Management instance is configured
@@ -143,8 +143,8 @@ broker:
       serviceInstanceName: xsuaa-api
   image:
     # Provide your API Service Broker Docker Image repository
-    repository: concise.common.repositories.cloud.sap/susaas-images/broker
-    tag: latest
+    repository: placeholder
+    tag: placeholder
   resources:
     limits:
       ephemeral-storage: 1G
