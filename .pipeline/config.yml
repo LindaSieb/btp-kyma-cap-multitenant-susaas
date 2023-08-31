@@ -1,9 +1,7 @@
 ---
 general:
   buildTool: "npm"
-  containerRegistryUrl: https://concise.common.repositories.cloud.sap
   chartPath: charts/sustainable-saas
-  dockerConfigJsonCredentialsId: docker-config
   verbose: true
 service:
   buildToolVersion: "N18"
@@ -17,13 +15,14 @@ stages:
     npmExecuteEndToEndTests: false
     kubernetesDeploy: false
     # this is where the configuration would go for a kubernetesDeploy during the Acceptance stage
+#    containerRegistrySecret: concise
 #    additionalParameters:
 #      - --debug
-#      - --set
-#      - global.imagePullSecret.name=concise
 #    deploymentName: mh-deployment-01
 #    kubeConfigFileCredentialsId: kube-config
 #    namespace: mh-01
+#    valuesMapping:
+#      global.imagePullSecret.name: imagePullSecrets[0].name
   Compliance:
     sonarExecuteScan: false
   Release:
@@ -32,13 +31,11 @@ stages:
     additionalParameters:
       # we should keep the debug flag. Otherwise there is not much written to the log during deployment. That look like we are stuck.
       - --debug
-#      - --set
-#      - global.imagePullSecret.name=concise
-    deploymentName: mh-deployment-044
+    deploymentName: mh-deployment-01
     kubeConfigFileCredentialsId: kube-config
     namespace: mh-01
     valuesMapping:
-      global.imagePullSecret.name: imagePullSecrets[0].name
+      global.imagePullSecret.name: imagePullSecrets[0].name # imagePullSecrets[0].name is defined by Piper
 
 steps:
   # custom additions to make npm build work
@@ -49,6 +46,8 @@ steps:
     helmExecute: true
 
   cnbBuild:
+    containerRegistryUrl: https://concise.common.repositories.cloud.sap
+    dockerConfigJsonCredentialsId: docker-config
     multipleImages:
       - path: gen/srv
         containerImageName: susaas-images/susaas-srv
@@ -72,7 +71,6 @@ steps:
       srv.image.tag: image.susaas-images/susaas-srv.tag
       broker.image.repository: image.susaas-image/broker.repository
       broker.image.tag: image.susaas-image/broker.tag
-#      global.imagePullSecret.name: imagePullSecrets[0].name
 
   dockerExecuteOnKubernetes:
     # should be removed for final version
