@@ -69,7 +69,7 @@ steps:
       srv.image.tag: image.susaas-images/susaas-srv.tag
       broker.image.repository: image.susaas-image/broker.repository
       broker.image.tag: image.susaas-image/broker.tag
-      global.imagePullSecret.name: secret.dockerconfig.json
+      global.imagePullSecret.name: secret.dockerconfigjson
 
   dockerExecuteOnKubernetes:
     # should be removed for final version
