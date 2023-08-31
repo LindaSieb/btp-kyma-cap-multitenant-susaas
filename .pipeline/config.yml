@@ -4,6 +4,7 @@ general:
   containerRegistryUrl: https://concise.common.repositories.cloud.sap
   chartPath: charts/sustainable-saas
   dockerConfigJsonCredentialsId: docker-config
+  verbose: true
 service:
   buildToolVersion: "N18"
 stages:
@@ -36,6 +37,8 @@ stages:
     deploymentName: mh-deployment-01
     kubeConfigFileCredentialsId: kube-config
     namespace: mh-01
+    valuesMapping:
+      global.imagePullSecret.name: imagePullSecrets[0].name
 
 steps:
   # custom additions to make npm build work
@@ -69,7 +72,7 @@ steps:
       srv.image.tag: image.susaas-images/susaas-srv.tag
       broker.image.repository: image.susaas-image/broker.repository
       broker.image.tag: image.susaas-image/broker.tag
-      global.imagePullSecret.name: imagePullSecrets[0].name
+#      global.imagePullSecret.name: imagePullSecrets[0].name
 
   dockerExecuteOnKubernetes:
     # should be removed for final version
