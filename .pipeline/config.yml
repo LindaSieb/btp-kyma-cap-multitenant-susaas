@@ -6,7 +6,6 @@ general:
   dockerConfigJsonCredentialsId: docker-config
 service:
   buildToolVersion: "N18"
-  dockerConfigTest: concise-secret-text
 stages:
   Build:
     mavenExecuteStaticCodeChecks: false
@@ -28,6 +27,7 @@ stages:
     sonarExecuteScan: false
   Release:
     kubernetesDeploy: true
+    containerRegistrySecret: concise
     additionalParameters:
       # we should keep the debug flag. Otherwise there is not much written to the log during deployment. That look like we are stuck.
       - --debug
@@ -69,6 +69,7 @@ steps:
       srv.image.tag: image.susaas-images/susaas-srv.tag
       broker.image.repository: image.susaas-image/broker.repository
       broker.image.tag: image.susaas-image/broker.tag
+      global.imagePullSecret.name: secret.dockerconfig.json
 
   dockerExecuteOnKubernetes:
     # should be removed for final version
