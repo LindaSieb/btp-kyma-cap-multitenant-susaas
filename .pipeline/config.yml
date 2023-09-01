@@ -45,13 +45,13 @@ steps:
     multipleImages:
       - path: gen/srv
         containerImageName: susaas-images/susaas-srv
+        containerImageTag: linda-linda-linda
       - path: gen/api
         containerImageName: susaas-image/susaas-api
       - path: broker
         containerImageName: susaas-image/broker
       - path: gen/db-com
         containerImageName: susaas-image/susaas-db-com
-        containerImageTag: linda-linda-linda
     # containerImageTag is optional. When not provided, this means a guid prepared by artifactSetVersion will be used
 
   helmExecute:
