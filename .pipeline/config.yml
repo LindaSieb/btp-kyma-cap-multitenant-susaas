@@ -2,7 +2,6 @@
 general:
   buildTool: "npm"
   chartPath: charts/sustainable-saas
-  verbose: true
 service:
   buildToolVersion: "N18"
 stages:
@@ -16,8 +15,6 @@ stages:
     kubernetesDeploy: false
     # this is where the configuration would go for a kubernetesDeploy during the Acceptance stage
 #    containerRegistrySecret: concise
-#    additionalParameters:
-#      - --debug
 #    deploymentName: mh-deployment-01
 #    kubeConfigFileCredentialsId: kube-config
 #    namespace: mh-01
@@ -28,9 +25,6 @@ stages:
   Release:
     kubernetesDeploy: true
     containerRegistrySecret: concise
-    additionalParameters:
-      # we should keep the debug flag. Otherwise there is not much written to the log during deployment. That look like we are stuck.
-      - --debug
     deploymentName: mh-deployment-01
     kubeConfigFileCredentialsId: kube-config
     namespace: mh-01
