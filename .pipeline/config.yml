@@ -31,7 +31,7 @@ stages:
     additionalParameters:
       # we should keep the debug flag. Otherwise there is not much written to the log during deployment. That look like we are stuck.
       - --debug
-    deploymentName: mh-deployment-01
+    deploymentName: linda-deployment-01
     kubeConfigFileCredentialsId: kube-config
     namespace: mh-01
     valuesMapping:
