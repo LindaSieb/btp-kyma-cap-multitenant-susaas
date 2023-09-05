@@ -50,13 +50,13 @@ steps:
     dockerConfigJsonCredentialsId: docker-config
     multipleImages:
       - path: gen/srv
-        containerImageName: susaas-images/susaas-srv
+        containerImageName: susaas.images/susaas.srv
       - path: gen/api
-        containerImageName: susaas-image/susaas-api
+        containerImageName: susaas.image/susaas.api
       - path: broker
-        containerImageName: susaas-image/broker
+        containerImageName: susaas.image/broker
       - path: gen/db-com
-        containerImageName: susaas-image/susaas-db-com
+        containerImageName: susaas.image/susaas.db.com
     # containerImageTag is optional. When not provided, this means a guid prepared by artifactSetVersion will be used
 
   helmExecute:
@@ -65,12 +65,12 @@ steps:
 
   kubernetesDeploy:
     valuesMapping:
-      api.image.repository: image.susaas-image/susaas-api.repository
-      api.image.tag: image.susaas-image/susaas-api.tag
-      srv.image.repository: image.susaas-images/susaas-srv.repository
-      srv.image.tag: image.susaas-images/susaas-srv.tag
-      broker.image.repository: image.susaas-image/broker.repository
-      broker.image.tag: image.susaas-image/broker.tag
+      api.image.repository: image.susaas.image/susaas.api.repository
+      api.image.tag: image.susaas.image/susaas.api.tag
+      srv.image.repository: image.susaas.images/susaas.srv.repository
+      srv.image.tag: image.susaas.images/susaas.srv.tag
+      broker.image.repository: image.susaas.image/broker.repository
+      broker.image.tag: image.susaas.image/broker.tag
 
   dockerExecuteOnKubernetes:
     # should be removed for final version
